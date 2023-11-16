@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:51:54 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/14 21:03:26 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:07:14 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,20 @@ void	ss(t_node *stack_a, t_node *stack_b)
 	ft_printf("ss\n");
 }
 
-void	pa(t_node *stack_a, t_node **stack_b)
+void	pa(t_node *stack_a, t_node *stack_b)
 {
-	if (!(*stack_b) || (*stack_b)->content == NULL)
+	if (!stack_b || stack_b->content == NULL)
 		return ;
-	ft_lstadd_front(&stack_a, *stack_b);
-	*stack_b = (*stack_b)->next;
+	ft_lstadd_front(&stack_a, stack_b);
+	stack_b = stack_b->next;
 }
 
-void	pb(t_node *stack_b, t_node **stack_a)
+void	pb(t_node *stack_b, t_node *stack_a)
 {
-	if (!(*stack_a) || (*stack_a)->content == NULL)
+	if (!(stack_a))//  || (*stack_a)->content == NULL)
 		return ;
-	ft_lstadd_front(&stack_b, *stack_a);
-	*stack_a = (*stack_a)->next;
+	// ft_printf("stack_b: %d\n", (int *)stack_b->content);
+	ft_lstadd_front(&stack_b, stack_a);
+	ft_printf("stack_b: %d\n", stack_b->content);
+	stack_a = stack_a->next;
 }

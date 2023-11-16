@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 LIB = ./includes/libftprintf/libftprintf.a
 
 SRCS = $(addprefix src/, $(SRC_FILES))
