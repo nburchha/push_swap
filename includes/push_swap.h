@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:12 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/16 15:57:55 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:27:41 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,15 @@ t_node	*allocate_stack_a(char **input);
 void	sa(t_node	*stack);
 void	sb(t_node	*stack);
 void	ss(t_node *stack_a, t_node *stack_b);
-void	pa(t_node *stack_a, t_node *stack_b);
-void	pb(t_node *stack_b, t_node *stack_a);
+void	pa(t_node **stack_a, t_node **stack_b);
+void	pb(t_node **stack_a, t_node **stack_b);
+void	ra(t_node **stack);
+void	rb(t_node **stack);
+void	rr(t_node **stack_a, t_node **stack_b);
+void	rra(t_node **stack);
+void	rrb(t_node **stack);
+void	rrr(t_node **stack_a, t_node **stack_b);
+
+void test_functions(t_node **stack_a, t_node **stack_b);
 
 #endif

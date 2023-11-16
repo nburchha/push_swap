@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 LIB = ./includes/libftprintf/libftprintf.a
 
 SRCS = $(addprefix src/, $(SRC_FILES))
-SRC_FILES = main.c allocate_stacks.c stack_operations.c
+SRC_FILES = main.c allocate_stacks.c stack_operations.c test.c
 
 OBJS = $(addprefix .obj/, $(SRC_FILES:.c=.o))
 
