@@ -6,25 +6,12 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:50:01 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/18 03:20:50 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:35:03 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	is_sorted(t_node **stack)
-{
-	t_node	*tmp;
-
-	tmp = *stack;
-	while (tmp->next != NULL)
-	{
-		if (*(int *)(tmp->content) > *(int *)(tmp->next->content))
-			return (-1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
 
 /// @return -1 if given num is the first position in the stack, 0 if somewhere in the middle and 1 if its at the end
 int	find_element(t_node **stack_a, int num)

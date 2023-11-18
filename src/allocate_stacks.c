@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:21:07 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/17 17:56:13 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/18 22:09:54 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	check_double(t_node *stack)
 	t_node	*tmp2;
 
 	tmp = stack;
-	while (tmp->next != NULL)
+	while (tmp != NULL)
 	{
 		tmp2 = tmp->next;
-		while (tmp2->next != NULL)
+		while (tmp2 != NULL)
 		{
 			if (*(int *)tmp->content == *(int *)tmp2->content)
 				return (-1);
@@ -83,6 +83,6 @@ t_node	*allocate_stack_a(char **input)
 		tmp = tmp->next;
 	}
 	if (check_double(stack_a) == -1)
-		return (write(2, "Error!\n", 7), NULL); //ft_lstclear(&stack_a, free), 
+		return (write(2, "Error!\n", 7), NULL); 
 	return (stack_a);
 }
