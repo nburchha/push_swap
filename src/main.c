@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:10:19 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/16 19:34:44 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/18 03:22:22 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	if (stack_a == NULL || stack_b == NULL)
-		return (1);
+		return (0);
 	*stack_a = allocate_stack_a(&argv[1]);
 	if (*stack_a == NULL)
 		return (1);
 	if (argc > 2)
-		test_functions(stack_a, stack_b);
-	// return (ft_lstclear(stack_a, free), ft_lstclear(stack_b, free), 0);
+		sort5(stack_a, stack_b);
+	print_stack("stack_a", *stack_a);
+	return (ft_lstclear(stack_a, free), 0); //, ft_lstclear(stack_b, free), 
 }

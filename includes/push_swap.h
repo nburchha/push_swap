@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:12 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/16 19:27:41 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/18 03:21:06 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ void	rra(t_node **stack);
 void	rrb(t_node **stack);
 void	rrr(t_node **stack_a, t_node **stack_b);
 
-void test_functions(t_node **stack_a, t_node **stack_b);
+void	test_functions(t_node **stack_a, t_node **stack_b);
+void print_stack(const char *stack_name, t_node *stack);
+// void	insertion_sort(t_node **stack_a, t_node **stack_b);
+
+void	sort3(t_node **stack_a);
+void	sort5(t_node **stack_a, t_node **stack_b);
+int	is_sorted(t_node **stack);
+int	find_element(t_node **stack_a, int num);
 
 #endif

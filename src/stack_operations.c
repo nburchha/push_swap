@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:51:54 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/16 20:24:15 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/18 01:23:48 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	pb(t_node **stack_a, t_node **stack_b)
 	else
 		*stack_a = NULL;
 	(*stack_b)->next = tmp;
+	ft_printf("pb\n");
 }
 
 void	pa(t_node **stack_a, t_node **stack_b)
@@ -83,6 +84,7 @@ void	pa(t_node **stack_a, t_node **stack_b)
 	else
 		*stack_b = NULL;
 	(*stack_a)->next = tmp;
+	ft_printf("pa\n");
 }
 
 void	ra(t_node **stack)
@@ -93,6 +95,7 @@ void	ra(t_node **stack)
 	*stack = (*stack)->next;
 	tmp->next = NULL;
 	ft_lstlast(*stack)->next = tmp;
+	ft_printf("ra\n");
 }
 
 void	rb(t_node **stack)
@@ -103,6 +106,7 @@ void	rb(t_node **stack)
 	*stack = (*stack)->next;
 	tmp->next = NULL;
 	ft_lstlast(*stack)->next = tmp;
+	ft_printf("rb\n");
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
@@ -117,6 +121,7 @@ void	rr(t_node **stack_a, t_node **stack_b)
 	*stack_b = (*stack_b)->next;
 	tmp->next = NULL;
 	ft_lstlast(*stack_b)->next = tmp;
+	ft_printf("rr\n");
 }
 
 void	rra(t_node **stack)
@@ -131,6 +136,7 @@ void	rra(t_node **stack)
 	tmp2->next = NULL;
 	tmp->next = *stack;
 	*stack = tmp;
+	ft_printf("rra\n");
 }
 
 void	rrb(t_node **stack)
@@ -145,6 +151,7 @@ void	rrb(t_node **stack)
 	tmp2->next = NULL;
 	tmp->next = *stack;
 	*stack = tmp;
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_node **stack_a, t_node **stack_b)
@@ -167,4 +174,5 @@ void	rrr(t_node **stack_a, t_node **stack_b)
 	tmp2->next = NULL;
 	tmp->next = *stack_b;
 	*stack_b = tmp;
+	ft_printf("rrr\n");
 }
