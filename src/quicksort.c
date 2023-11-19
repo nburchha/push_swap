@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:35:58 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 14:41:13 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 17:52:29 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	quicksort(t_node **stack_a, t_node **stack_b, int len)
 {
 	t_node	*pivot;
 	int	i;
-	int	rotation;
+	int	less_than_pivot;
 
 	if (len <= 5)
 	{
@@ -47,27 +47,22 @@ void	quicksort(t_node **stack_a, t_node **stack_b, int len)
 	}
 	pivot = median(stack_a, len);
 	i = -1;
-	rotation = 0;
-	while (++i < len && !(is_sorted(stack_a, len) == 0 && !*stack_b))
+	less_than_pivot = 0;
+	while (++i < len && !(is_sorted(stack_a, len) == 0 && !*stack_b) && *stack_a)
 	{
 		if (*(int *)(*stack_a)->content < *(int *)pivot->content)
-			pb(stack_a, stack_b);
-		else
 		{
-			if (i != rotation)
-				ra(stack_a);
-			rotation++;
+			pb(stack_a, stack_b);
+			less_than_pivot++;
 		}
+		else
+			ra(stack_a);
 	}
-	i = rotation;
-	while (0 >= --rotation)
-		if (i != rotation + 1)
-			rra(stack_a);
-	if (is_sorted(stack_a, len) == -1)
-		quicksort(stack_a, stack_b, len - rotation);
-	if (is_sorted(stack_a, len / 2) == -1) // if this area is not sorted, go into recursion
-	{
-		quicksort(stack_a, stack_b, len / 2);
-		push_back(stack_a, stack_b, len - i);
-	}
+	i = less_than_pivot;
+	while (0 >= --i)
+		pa(stack_a, stack_b);
+	quicksort(stack_b, stack_a, less_than_pivot);
+	push_back(stack_b, stack_a, less_than_pivot);
+	quicksort(stack_a, stack_b, len - less_than_pivot - 1);
+	push_back(stack_b, stack_a, len - less_than_pivot - 1);
 }
