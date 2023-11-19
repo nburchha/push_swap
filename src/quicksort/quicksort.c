@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:35:58 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 17:52:29 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:22:22 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	quicksort(t_node **stack_a, t_node **stack_b, int len)
 	pivot = median(stack_a, len);
 	i = -1;
 	less_than_pivot = 0;
-	while (++i < len && !(is_sorted(stack_a, len) == 0 && !*stack_b) && *stack_a)
+	while (++i < len)// && !(is_sorted(stack_a, len) == 0 && !*stack_b) && *stack_a)
 	{
 		if (*(int *)(*stack_a)->content < *(int *)pivot->content)
 		{

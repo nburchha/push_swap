@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:00:59 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/14 11:18:30 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:01:42 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct s_node
 {
 	void			*content;
+	int				index;
 	struct s_node	*next;
 }					t_node;
 # endif

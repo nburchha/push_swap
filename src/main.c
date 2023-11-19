@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:10:19 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 16:21:00 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:41:16 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	if (*stack_a == NULL)
 		return (1);
 	if (argc > 2)
-		quicksort(stack_a, stack_b, ft_lstsize(*stack_a));
+		k_sort(stack_a, stack_b);
 	// print_stack("stack_a", *stack_a);
 	return (free(stack_b), ft_lstclear(stack_a, free), 0); //, ft_lstclear(stack_b, free), 
 }

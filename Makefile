@@ -1,10 +1,10 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra
 LIB = ./includes/libftprintf/libftprintf.a
 
 SRCS = $(addprefix src/, $(SRC_FILES))
-SRC_FILES = main.c allocate_stacks.c stack_operations.c test.c sort5.c sort3.c quicksort.c median.c
+SRC_FILES = main.c allocate_stacks.c stack_operations.c test.c sort5.c sort3.c k_sort.c get_sorted_index.c #quicksort.c median.c
 
 OBJS = $(addprefix .obj/, $(SRC_FILES:.c=.o))
 

@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:50:01 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 16:33:02 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:25:22 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	sort3(t_node **stack_a)
 {
 	t_node	*tmp;
 
+	if (ft_lstsize(*stack_a) < 2)
+		return ;
 	tmp = *stack_a;
 	if (find_element(stack_a, *(int *)ft_lstlast(tmp)->content) != 1) //if the last item is not the highest num
 	{
