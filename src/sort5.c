@@ -6,52 +6,67 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 14:07:21 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:01:55 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort5a(t_node **stack_a, t_node **stack_b)
+t_node	*find_smallest_element(t_node **stack_a)
 {
-	while ((*stack_a)->next->next->next != NULL)
+	t_node	*tmp;
+	t_node	*smallest;
+
+	tmp = *stack_a;
+	smallest = tmp;
+	while (tmp != NULL)
 	{
-		if (find_element(stack_a, *(int *)(*stack_a)->content) == 1)
-			pb(stack_a, stack_b);
-		else
-			ra(stack_a);
+		if (*(int *)tmp->content < *(int *)smallest->content)
+			smallest = tmp;
+		tmp = tmp->next;
 	}
-	if (find_element(stack_b, *(int *)(*stack_b)->content) == 1)
-		sa(*stack_b);
-	sort3(stack_a);
-	while (*stack_b)
-		pa(stack_a, stack_b);
-	ra(stack_a);
-	ra(stack_a);
+	return (smallest);
 }
 
-void	sort5b(t_node **stack_a, t_node **stack_b)
+void	which_rotation(t_node **stack_a, t_node *node_to_rotate)
 {
-	while ((*stack_a)->next->next->next != NULL)
+	int		r;
+	int		rr;
+	t_node	*tmp;
+
+	r = 0;
+	rr = 0;
+	tmp = *stack_a;
+	while (tmp != NULL && tmp != node_to_rotate)
 	{
-		if (find_element(stack_a, *(int *)(*stack_a)->content) == -1)
-			pb(stack_a, stack_b);
-		else
-			ra(stack_a);
+		r++;
+		tmp = tmp->next;
 	}
-	if (find_element(stack_b, *(int *)(*stack_b)->content) == -1)
-		sa(*stack_b);
-	sort3(stack_a);
-	while (*stack_b)
-		pa(stack_a, stack_b);
+	while (tmp != NULL)
+	{
+		rr++;
+		tmp = tmp->next;
+	}
+	if (r < rr)
+		while (r-- > 0)
+			ra(stack_a);
+	else
+		while (rr-- > 0)
+			rra(stack_a);
 }
 
 void	sort5(t_node **stack_a, t_node **stack_b)
 {
-	if (*stack_a == NULL)
+	if (ft_lstsize(*stack_a) <= 3)
+	{
+		sort3(stack_a);
 		return ;
-	if (find_element(stack_a, *(int *)(*stack_a)->content) == 1)
-		sort5a(stack_a, stack_b);
-	else
-		sort5b(stack_a, stack_b);
+	}
+	which_rotation(stack_a, find_smallest_element(stack_a));
+	pb(stack_a, stack_b);
+	which_rotation(stack_a, find_smallest_element(stack_a));
+	pb(stack_a, stack_b);
+	sort3(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
 }
