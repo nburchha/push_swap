@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 16:29:21 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:41:16 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ t_node	*find_smallest_element(t_node **stack_a)
 	smallest = tmp;
 	while (tmp != NULL)
 	{
-		if (*(int *)tmp->content < *(int *)smallest->content)
+		if (tmp->index < smallest->index)
 			smallest = tmp;
 		tmp = tmp->next;
 	}
+	ft_printf("smallest = %p\n", smallest);
 	return (smallest);
 }
 
@@ -34,6 +35,10 @@ void	which_rotation(t_node **stack_a, t_node *node_to_rotate)
 	int		rr;
 	t_node	*tmp;
 
+	if (node_to_rotate == NULL)
+		return ;
+	ft_printf("node_to_rotate = %d\n", node_to_rotate->index);
+	print_stack("stack_b", *stack_a);
 	r = 0;
 	rr = 0;
 	tmp = *stack_a;
@@ -48,10 +53,10 @@ void	which_rotation(t_node **stack_a, t_node *node_to_rotate)
 		tmp = tmp->next;
 	}
 	if (r < rr)
-		while (r-- > 0)
+		while (r-- > 1)
 			ra(stack_a);
 	else
-		while (rr-- > 0)
+		while (rr-- > 1)
 			rra(stack_a);
 }
 
@@ -67,6 +72,8 @@ void	sort5(t_node **stack_a, t_node **stack_b)
 	which_rotation(stack_a, find_smallest_element(stack_a));
 	pb(stack_a, stack_b);
 	sort3(stack_a);
+	if ((*stack_b)->index > (*stack_b)->next->index)
+		sb(*stack_b);
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }

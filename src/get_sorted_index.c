@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:02:11 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 19:47:38 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 23:02:41 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	is_sorted_array(int *array, int len)
 
 int	*fill_array(t_node **stack, int len)
 {
-	int	*array;
-	int	i;
+	int		*array;
+	int		i;
 	t_node	*temp;
 
 	i = -1;
@@ -47,17 +47,17 @@ int	*fill_array(t_node **stack, int len)
 	return (array);
 }
 
-void bubbleSort(int array[], int size)
+void bubbleSort(int array[], int len)
 {
 	int	i;
 	int	j;
 	int temp;
 
 	i = 0;
-	while (i < size - 1)
+	while (i < len - 1)
 	{
 		j = 0;
-		while (j < size - i - 1)
+		while (j < len - i - 1)
 		{
 			if (array[j] > array[j + 1])
 			{
@@ -75,7 +75,7 @@ int	assign_index(int *array, int len, int value)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (++i < len)
 	{
 		if (array[i] == value)
@@ -89,6 +89,7 @@ void	sorted_index(t_node **stack_a)
 	int		*array;
 	int		i;
 	int		len;
+	t_node	*temp;
 
 	len = ft_lstsize(*stack_a);
 	array = fill_array(stack_a, len);
@@ -96,10 +97,11 @@ void	sorted_index(t_node **stack_a)
 		return ;
 	bubbleSort(array, len);
 	i = -1;
-	while (++i < len && *stack_a)
+	temp = *stack_a;
+	while (++i < len && temp != NULL)
 	{
-		(*stack_a)->index = assign_index(array, len, *(int *)(*stack_a)->content);
-		*stack_a = (*stack_a)->next;
+		temp->index = assign_index(array, len, *(int *)temp->content);
+		temp = temp->next;
 	}
 	free(array);
 }

@@ -28,13 +28,13 @@ generate_numbers() {
             nums+=($num)
             echo -n "$num "
         fi
-    done
+    done | xargs ./push_swap
 
     # Convert the array of numbers to a space-separated string
-    local nums_str="${nums[*]}"
+    #local nums_str="${nums[*]}"
 
     # Pass the numbers to ./push_swap
-    echo $nums_str | xargs ./push_swap
+    #echo $nums_str 
 }
 
 # Default values

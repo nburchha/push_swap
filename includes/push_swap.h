@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:12 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 19:42:53 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:48:11 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,16 @@ void	test_functions(t_node **stack_a, t_node **stack_b);
 void	print_stack(const char *stack_name, t_node *stack);
 // void	insertion_sort(t_node **stack_a, t_node **stack_b);
 
-void	sort3(t_node **stack_a);
+void	sort3(t_node **stack);
 void	sort5(t_node **stack_a, t_node **stack_b);
 int		is_sorted(t_node **stack, int len);
-int		find_element(t_node **stack_a, int num);
 t_node	*median(t_node **stack, int len);
 void	quicksort(t_node **stack_a, t_node **stack_b, int len);
 
 void	k_sort(t_node **stack_a, t_node **stack_b);
 void	sorted_index(t_node **stack_a);
+void	which_rotation(t_node **stack_a, t_node *node_to_rotate);
+t_node	*find_element(t_node **stack, int index);
+// t_node	*find_biggest_element(t_node **stack_a);
 
 #endif

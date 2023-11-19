@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:21:07 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 20:01:59 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 22:28:00 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_node	*allocate_stack_a(char **input)
 			return (write(2, "Error!\n", 7), NULL);
 	stack_a = ft_lstnew(allocate_content(ft_atoi(input[i])));
 	if (stack_a == NULL)
-		return (ft_lstclear(&stack_a, free), write(2, "Error!\n", 7), NULL);
+		return (write(2, "Error!\n", 7), NULL);
 	tmp = stack_a;
 	while (input[++i])
 	{
@@ -83,7 +83,7 @@ t_node	*allocate_stack_a(char **input)
 		tmp = tmp->next;
 	}
 	if (check_double(stack_a) == -1)
-		return (write(2, "Error!\n", 7), NULL);
+		return (ft_lstclear(&stack_a, free), write(2, "Error!\n", 7), NULL);
 	sorted_index(&stack_a);
 	return (stack_a);
 }
