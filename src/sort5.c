@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/18 03:21:34 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 14:07:21 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	sort5b(t_node **stack_a, t_node **stack_b)
 
 void	sort5(t_node **stack_a, t_node **stack_b)
 {
+	if (*stack_a == NULL)
+		return ;
 	if (find_element(stack_a, *(int *)(*stack_a)->content) == 1)
 		sort5a(stack_a, stack_b);
 	else

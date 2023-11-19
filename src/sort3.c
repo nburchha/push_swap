@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:50:01 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/18 18:35:03 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 13:42:53 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,27 @@
 int	find_element(t_node **stack_a, int num)
 {
 	t_node	*tmp;
-	int		flag1;
-	int		flag2;
+	int		lower_flag;
+	int		higher_flag;
 
-	flag1 = 0;
-	flag2 = 0;
+	lower_flag = 0;
+	higher_flag = 0;
+	if (*stack_a == NULL)
+		return (-2);
 	if ((*stack_a)->next == NULL)
 		return (1);
 	tmp = *stack_a;
 	while (tmp != NULL)
 	{
 		if (num > *(int *)tmp->content)
-			flag1 = 1;
+			lower_flag = 1;
 		if (num < *(int *)tmp->content)
-			flag2 = 1;
+			higher_flag = 1;
 		tmp = tmp->next;
 	}
-	if (flag1 == 0 && flag2 == 1)
+	if (lower_flag == 0 && higher_flag == 1)
 		return (-1);
-	if (flag1 == 1 && flag2 == 0)
+	if (lower_flag == 1 && higher_flag == 0)
 		return (1);
 	return (0);
 }
