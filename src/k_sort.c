@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:56:35 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 00:50:57 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:14:13 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@ t_node	*find_biggest_element(t_node **stack)
 	return (biggest);
 }
 
-void	push_back(t_node **stack_a, t_node **stack_b)
+void	push_back(t_node **stack_a, t_node **stack_b, int len)
 {
-	int		index;
-
-	while (*stack_b)
+	while (len > 0)
 	{
-		index = ft_lstsize(*stack_b) - 1;
-		which_rotation(stack_b, find_biggest_element(stack_b));
-		pa(stack_a, stack_b);
+		if ((*stack_b)->index == ft_lstsize(*stack_b) - 1)
+			pa(stack_a, stack_b);
+		else
+		{
+			which_rotation(stack_b, find_biggest_element(stack_b));
+			pa(stack_a, stack_b);
+		}
 	}
 }
 
@@ -55,24 +57,23 @@ void	k_sort(t_node **stack_a, t_node **stack_b)
 	int	i;
 	int range;
 
-	i = 1;
-	range = ft_sqrt(ft_lstsize(*stack_a)) * 1.4;
-	// ft_printf("range = %d\n", range);
+	i = 0;
+	range = ft_sqrt(ft_lstsize(*stack_a)) * 14 / 10;
 	while (*stack_a)
 	{
 		if ((*stack_a)->index <= i)
 		{
 			pb(stack_a, stack_b);
-			rrb(stack_b);
+			rb(stack_b);
+			i++;
 		}
-		else if ((*stack_a)->index < i + range)
+		else if ((*stack_a)->index <= i + range)
+		{
 			pb(stack_a, stack_b);
+			i++;
+		}
 		else
 		{
 			ra(stack_a);
-			i--;
-		}
-		i++;
 	}
-	push_back(stack_a, stack_b);
 }

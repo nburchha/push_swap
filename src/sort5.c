@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 00:41:16 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:15:08 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	which_rotation(t_node **stack_a, t_node *node_to_rotate)
 
 	if (node_to_rotate == NULL)
 		return ;
-	ft_printf("node_to_rotate = %d\n", node_to_rotate->index);
-	print_stack("stack_b", *stack_a);
 	r = 0;
 	rr = 0;
 	tmp = *stack_a;
@@ -72,7 +70,7 @@ void	sort5(t_node **stack_a, t_node **stack_b)
 	which_rotation(stack_a, find_smallest_element(stack_a));
 	pb(stack_a, stack_b);
 	sort3(stack_a);
-	if ((*stack_b)->index > (*stack_b)->next->index)
+	if ((*stack_b)->index < (*stack_b)->next->index)
 		sb(*stack_b);
 	pa(stack_a, stack_b);
 	pa(stack_a, stack_b);

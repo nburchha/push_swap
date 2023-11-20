@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:51:54 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 23:13:36 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:15:42 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void	ra(t_node **stack)
 
 	if (*stack == NULL)
 		return ;
+	if (*stack == NULL)
+		return ;
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = NULL;
@@ -104,6 +106,8 @@ void	rb(t_node **stack)
 {
 	t_node	*tmp;
 
+	if (*stack == NULL || (*stack)->next == NULL)
+		return ;
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	tmp = *stack;
@@ -135,6 +139,8 @@ void	rra(t_node **stack)
 
 	if ((*stack)->next == NULL)
 		return ;
+	if ((*stack)->next == NULL)
+		return ;
 	tmp = ft_lstlast(*stack);
 	tmp2 = *stack;
 	while (tmp2->next->next != NULL)
@@ -150,6 +156,8 @@ void	rrb(t_node **stack)
 	t_node	*tmp;
 	t_node	*tmp2;
 
+	if ((*stack)->next == NULL)
+		return ;
 	if ((*stack)->next == NULL)
 		return ;
 	tmp = ft_lstlast(*stack);
