@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 14:15:08 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:23:04 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,19 @@ void	which_rotation(t_node **stack_a, t_node *node_to_rotate)
 	if (node_to_rotate == NULL)
 		return ;
 	r = 0;
-	rr = 0;
 	tmp = *stack_a;
 	while (tmp != NULL && tmp != node_to_rotate)
 	{
 		r++;
 		tmp = tmp->next;
 	}
-	while (tmp != NULL)
-	{
-		rr++;
-		tmp = tmp->next;
-	}
-	if (r < rr)
-		while (r-- > 1)
-			ra(stack_a);
+	rr = (ft_lstsize(*stack_a) + 3) - r;
+	if (r <= rr)
+		while (*stack_a != node_to_rotate)
+			rb(stack_a);
 	else
-		while (rr-- > 1)
-			rra(stack_a);
+		while (*stack_a != node_to_rotate)
+			rrb(stack_a);
 }
 
 void	sort5(t_node **stack_a, t_node **stack_b)

@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:56:35 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 14:14:13 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:29:32 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_node	*find_biggest_element(t_node **stack)
 	biggest = tmp;
 	while (tmp != NULL)
 	{
-		if (*(int *)tmp->content > *(int *)biggest->content)
+		if (tmp->index > biggest->index)
 			biggest = tmp;
 		tmp = tmp->next;
 	}
@@ -42,13 +42,9 @@ void	push_back(t_node **stack_a, t_node **stack_b, int len)
 {
 	while (len > 0)
 	{
-		if ((*stack_b)->index == ft_lstsize(*stack_b) - 1)
-			pa(stack_a, stack_b);
-		else
-		{
-			which_rotation(stack_b, find_biggest_element(stack_b));
-			pa(stack_a, stack_b);
-		}
+		which_rotation(stack_b, find_biggest_element(stack_b));
+		pa(stack_a, stack_b);
+		len--;
 	}
 }
 
@@ -73,7 +69,7 @@ void	k_sort(t_node **stack_a, t_node **stack_b)
 			i++;
 		}
 		else
-		{
 			ra(stack_a);
 	}
+	push_back(stack_a, stack_b, ft_lstsize(*stack_b));
 }

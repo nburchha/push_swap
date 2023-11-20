@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:12 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 00:48:11 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:19:01 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	k_sort(t_node **stack_a, t_node **stack_b);
 void	sorted_index(t_node **stack_a);
 void	which_rotation(t_node **stack_a, t_node *node_to_rotate);
 t_node	*find_element(t_node **stack, int index);
+void	push_back(t_node **stack_a, t_node **stack_b, int len);
 // t_node	*find_biggest_element(t_node **stack_a);
 
 #endif
