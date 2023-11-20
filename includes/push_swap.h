@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:12 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/18 19:16:33 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:42:53 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 #  define S_NODE
 typedef struct s_node
 {
-	void			*content;
+	void		*content;
+	int			index;
 	struct s_node	*next;
 }					t_node;
 # endif
@@ -53,5 +54,8 @@ int		is_sorted(t_node **stack, int len);
 int		find_element(t_node **stack_a, int num);
 t_node	*median(t_node **stack, int len);
 void	quicksort(t_node **stack_a, t_node **stack_b, int len);
+
+void	k_sort(t_node **stack_a, t_node **stack_b);
+void	sorted_index(t_node **stack_a);
 
 #endif
