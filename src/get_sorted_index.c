@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:02:11 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 19:47:38 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:37:18 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	sorted_index(t_node **stack_a)
 	int		*array;
 	int		i;
 	int		len;
+	t_node	*tmp;
 
 	len = ft_lstsize(*stack_a);
 	array = fill_array(stack_a, len);
@@ -96,10 +97,11 @@ void	sorted_index(t_node **stack_a)
 		return ;
 	bubbleSort(array, len);
 	i = -1;
+	tmp = *stack_a;
 	while (++i < len && *stack_a)
 	{
-		(*stack_a)->index = assign_index(array, len, *(int *)(*stack_a)->content);
-		*stack_a = (*stack_a)->next;
+		tmp->index = assign_index(array, len, *(int *)tmp->content);
+		tmp = tmp->next;
 	}
 	free(array);
 }
