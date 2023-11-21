@@ -6,13 +6,13 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:56:35 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 15:29:32 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:56:28 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int ft_sqrt(int nb)
+int	ft_sqrt(int nb)
 {
 	int	i;
 
@@ -42,8 +42,8 @@ void	push_back(t_node **stack_a, t_node **stack_b, int len)
 {
 	while (len > 0)
 	{
-		which_rotation(stack_b, find_biggest_element(stack_b));
-		pa(stack_a, stack_b);
+		which_rotation(stack_b, find_biggest_element(stack_b), 1);
+		pa(stack_a, stack_b, 0);
 		len--;
 	}
 }
@@ -51,7 +51,7 @@ void	push_back(t_node **stack_a, t_node **stack_b, int len)
 void	k_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	i;
-	int range;
+	int	range;
 
 	i = 0;
 	range = ft_sqrt(ft_lstsize(*stack_a)) * 14 / 10;
@@ -59,17 +59,17 @@ void	k_sort(t_node **stack_a, t_node **stack_b)
 	{
 		if ((*stack_a)->index <= i)
 		{
-			pb(stack_a, stack_b);
-			rb(stack_b);
+			pb(stack_a, stack_b, 0);
+			rb(stack_b, 0);
 			i++;
 		}
 		else if ((*stack_a)->index <= i + range)
 		{
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 0);
 			i++;
 		}
 		else
-			ra(stack_a);
+			ra(stack_a, 0);
 	}
 	push_back(stack_a, stack_b, ft_lstsize(*stack_b));
 }

@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:02:11 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 14:13:46 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/21 01:02:28 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ int	*fill_array(t_node **stack, int len)
 	return (array);
 }
 
-void bubbleSort(int array[], int len)
+void	bubble_sort(int array[], int len)
 {
 	int	i;
 	int	j;
-	int temp;
+	int	temp;
 
 	i = 0;
 	while (i < len - 1)
@@ -75,7 +75,7 @@ int	assign_index(int *array, int len, int value)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	while (++i < len)
 	{
 		if (array[i] == value)
@@ -95,10 +95,10 @@ void	sorted_index(t_node **stack_a)
 	array = fill_array(stack_a, len);
 	if (!array)
 		return ;
-	bubbleSort(array, len);
+	bubble_sort(array, len);
 	i = -1;
 	tmp = *stack_a;
-	while (++i < len && *stack_a)
+	while (++i < len && tmp)
 	{
 		tmp->index = assign_index(array, len, *(int *)tmp->content);
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:21:07 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 14:10:51 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:08:56 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ t_node	*allocate_stack_a(char **input)
 {
 	t_node	*stack_a;
 	t_node	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (check_input(input[i]) == -1)
-			return (write(2, "Error!\n", 7), NULL);
+		return (write(2, "Error!\n", 7), NULL);
 	stack_a = ft_lstnew(allocate_content(ft_atoi(input[i])));
 	if (stack_a == NULL)
 		return (write(2, "Error!\n", 7), NULL);
@@ -76,14 +76,15 @@ t_node	*allocate_stack_a(char **input)
 	while (input[++i])
 	{
 		if (check_input(input[i]) == -1)
-			return (ft_lstclear(&stack_a, free), write(2, "Error!\n", 7), NULL);
-		ft_lstadd_back(&stack_a, ft_lstnew(allocate_content(ft_atoi(input[i]))));
+			return (ft_lstclear(&stack_a, &free), write(2, "Error!\n", 7), NULL);
+		ft_lstadd_back(&stack_a, \
+		ft_lstnew(allocate_content(ft_atoi(input[i]))));
 		if (tmp->next == NULL)
-			return (ft_lstclear(&stack_a, free), write(2, "Error!\n", 7), NULL);
+			return (ft_lstclear(&stack_a, &free), write(2, "Error!\n", 7), NULL);
 		tmp = tmp->next;
 	}
 	if (check_double(stack_a) == -1)
-		return (ft_lstclear(&stack_a, free), write(2, "Error!\n", 7), NULL);
+		return (ft_lstclear(&stack_a, &free), write(2, "Error!\n", 13), NULL);
 	sorted_index(&stack_a);
 	return (stack_a);
 }

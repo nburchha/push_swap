@@ -6,16 +6,30 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:10:19 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 15:21:00 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/21 00:58:19 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	print_stack(t_node **stack)
+{
+	t_node	*tmp;
+
+	tmp = *stack;
+	ft_printf("stack:\n");
+	while (tmp != NULL)
+	{
+		ft_printf("content: %d, index: %d ", *(int *)tmp->content, tmp->index);
+		tmp = tmp->next;
+	}
+}
+
 void	sort(t_node **stack_a, t_node **stack_b)
 {
-	if (ft_lstsize(*stack_a) == 2 && (*stack_a)->index > (*stack_a)->next->index)
-		sa(*stack_a);
+	if (ft_lstsize(*stack_a) == 2 && (*stack_a)->index > \
+	(*stack_a)->next->index)
+		sa(*stack_a, 1);
 	else if (ft_lstsize(*stack_a) <= 3)
 		sort3(stack_a);
 	else if (ft_lstsize(*stack_a) <= 5)
@@ -32,7 +46,7 @@ int	main(int argc, char **argv)
 	t_node	**stack_a;
 	t_node	**stack_b;
 
-	if (argc <= 2) //exit without printing something
+	if (argc <= 2)
 		return (1);
 	stack_a = (t_node **)malloc(sizeof(t_node *));
 	stack_b = (t_node **)malloc(sizeof(t_node *));
@@ -41,11 +55,10 @@ int	main(int argc, char **argv)
 	if (stack_a == NULL || stack_b == NULL)
 		return (0);
 	*stack_a = allocate_stack_a(&argv[1]);
-	print_stack("stack_a", *stack_a);
 	if (*stack_a == NULL)
-		return (1);
-	if (argc > 2)
+		return (free(stack_a), free(stack_b), 1);
+	if (argc > 2 && is_sorted(stack_a, stack_b) == 0)
 		sort(stack_a, stack_b);
-	print_stack("stack_a", *stack_a);
-	return (free(stack_b), ft_lstclear(stack_a, free), 0); //, ft_lstclear(stack_b, free), 
+	// ft_printf(is_sorted(stack_a, stack_b) == 1 ? "OK\n" : "KO\n");
+	return (free(stack_b), ft_lstclear(stack_a, &free), free(stack_a), 0);
 }

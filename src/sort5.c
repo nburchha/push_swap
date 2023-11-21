@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 15:23:04 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 23:56:37 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,47 @@ t_node	*find_smallest_element(t_node **stack_a)
 			smallest = tmp;
 		tmp = tmp->next;
 	}
-	ft_printf("smallest = %p\n", smallest);
 	return (smallest);
 }
 
-void	which_rotation(t_node **stack_a, t_node *node_to_rotate)
+void	r_util(t_node *rotate_to, t_node **stack, int a_or_b, int r_or_rr)
+{
+	if (r_or_rr <= 0)
+	{
+		while (*stack != rotate_to)
+		{
+			if (a_or_b == 0)
+				ra(stack, 0);
+			else
+				rb(stack, 0);
+		}
+	}
+	else
+	{
+		while (*stack != rotate_to)
+		{
+			if (a_or_b == 0)
+				rra(stack, 0);
+			else
+				rrb(stack, 0);
+		}
+	}
+}
+
+void	which_rotation(t_node **stack_a, t_node *rotate_to, int i)
 {
 	int		r;
 	int		rr;
 	t_node	*tmp;
 
-	if (node_to_rotate == NULL)
+	if (rotate_to == NULL)
 		return ;
-	r = 0;
+	r = -1;
 	tmp = *stack_a;
-	while (tmp != NULL && tmp != node_to_rotate)
-	{
-		r++;
+	while (tmp != NULL && tmp != rotate_to && ++r >= 0)
 		tmp = tmp->next;
-	}
 	rr = (ft_lstsize(*stack_a) + 3) - r;
-	if (r <= rr)
-		while (*stack_a != node_to_rotate)
-			rb(stack_a);
-	else
-		while (*stack_a != node_to_rotate)
-			rrb(stack_a);
+	r_util(rotate_to, stack_a, i, r - rr);
 }
 
 void	sort5(t_node **stack_a, t_node **stack_b)
@@ -60,13 +75,16 @@ void	sort5(t_node **stack_a, t_node **stack_b)
 		sort3(stack_a);
 		return ;
 	}
-	which_rotation(stack_a, find_smallest_element(stack_a));
-	pb(stack_a, stack_b);
-	which_rotation(stack_a, find_smallest_element(stack_a));
-	pb(stack_a, stack_b);
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		which_rotation(stack_a, find_smallest_element(stack_a), 0);
+		pb(stack_a, stack_b, 0);
+	}
 	sort3(stack_a);
-	if ((*stack_b)->index < (*stack_b)->next->index)
-		sb(*stack_b);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	if ((*stack_b)->next != NULL && (*stack_b)->index < \
+	(*stack_b)->next->index)
+		sb(*stack_b, 0);
+	pa(stack_a, stack_b, 0);
+	if (ft_lstsize(*stack_b) == 1)
+		pa(stack_a, stack_b, 0);
 }

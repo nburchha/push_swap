@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:56:29 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/16 18:51:31 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:56:13 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,13 @@ void	ft_lstclear(t_node **lst, void (*del)(void *))
 	t_node	*tmp;
 
 	if (!*lst)
-	{
-		free(lst);
 		return ;
-	}
 	while (*lst != NULL)
 	{
 		tmp = (*lst);
 		(*lst) = (*lst)->next;
 		ft_lstdelone(tmp, del);
 	}
-	free(lst);
-	lst = NULL;
 }
 
 // int	main(void)
