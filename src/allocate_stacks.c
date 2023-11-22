@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:21:07 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 20:08:56 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/22 23:23:57 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,27 @@ int	check_double(t_node *stack)
 int	check_input(const char *str)
 {
 	int	i;
+	int	j;
 
-	i = -1;
-	if (str[0] == '-')
-		i++;
-	while (str[++i])
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) == 1 && str[i + 1] == '-')
+			return (-1);
+		if (str[i] == ' ' || str[i] == '-')
+		{
+			if (str[i] == '-')
+				j++;
+			if (i - j >= 10)
+				return (-1);
+			i++;
+			j = i;
+		}
 		if (ft_isdigit(str[i]) == 0)
 			return (-1);
-	if (i > 10 && str[i - 1] - '0' > 7 && str[0] != '-')
-		return (-1);
-	if (i > 11 && str[0] == '-' && str[i - 1] - '0' > 8)
-		return (-1);
+		i++;
+	}
 	return (0);
 }
 
@@ -60,31 +70,57 @@ void	*allocate_content(int num)
 	return ((void *)num_p);
 }
 
-t_node	*allocate_stack_a(char **input)
+void	allocate_stack_a(char **input, t_node **stack_a)
 {
-	t_node	*stack_a;
-	t_node	*tmp;
 	int		i;
+	int		j;
+	char **splitted_strings;
 
-	i = 0;
-	if (check_input(input[i]) == -1)
-		return (write(2, "Error!\n", 7), NULL);
-	stack_a = ft_lstnew(allocate_content(ft_atoi(input[i])));
-	if (stack_a == NULL)
-		return (write(2, "Error!\n", 7), NULL);
-	tmp = stack_a;
+	i = -1;
 	while (input[++i])
 	{
-		if (check_input(input[i]) == -1)
-			return (ft_lstclear(&stack_a, &free), write(2, "Error!\n", 7), NULL);
-		ft_lstadd_back(&stack_a, \
-		ft_lstnew(allocate_content(ft_atoi(input[i]))));
-		if (tmp->next == NULL)
-			return (ft_lstclear(&stack_a, &free), write(2, "Error!\n", 7), NULL);
-		tmp = tmp->next;
+		j = -1;
+		splitted_strings = ft_split(input[i], ' ');
+		if (splitted_strings == NULL)
+			free_exit(stack_a, NULL, splitted_strings);
+		if (i == 0)
+		{
+			j++;
+			*stack_a = ft_lstnew(allocate_content(ft_atoi(splitted_strings[j])));
+			if (*stack_a == NULL)
+				free_exit(NULL, NULL, splitted_strings);
+		}
+		while (splitted_strings[++j])
+		{
+			if (check_input(splitted_strings[j]) == -1)
+				free_exit(stack_a, NULL, splitted_strings);
+			ft_lstadd_back(stack_a, \
+			ft_lstnew(allocate_content(ft_atoi(splitted_strings[j]))));
+			if (ft_lstlast(*stack_a) == NULL)
+				free_exit(stack_a, NULL, splitted_strings);
+		}
+		free_split(splitted_strings);
 	}
-	if (check_double(stack_a) == -1)
-		return (ft_lstclear(&stack_a, &free), write(2, "Error!\n", 13), NULL);
-	sorted_index(&stack_a);
-	return (stack_a);
+	if (check_double(*stack_a) == -1)
+		free_exit(stack_a, NULL, splitted_strings);
+}
+
+void	free_exit(t_node **stack_a, t_node **stack_b, char **split)
+{
+	if (split != NULL)
+		free_split(split);
+	ft_lstclear(stack_a, &free);
+	ft_lstclear(stack_b, &free);
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
 }
