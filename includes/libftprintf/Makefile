@@ -12,7 +12,7 @@ $(NAME): $(OBJS) $(LIB)
 $(LIB):
 	cd libft && make
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 	cd libft && make clean
 fclean: clean
 	rm -f $(NAME)

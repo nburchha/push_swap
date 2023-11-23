@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 12:00:59 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/19 19:01:42 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:45:45 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 
 # ifndef S_NODE
 #  define S_NODE
+
 typedef struct s_node
 {
 	void			*content;

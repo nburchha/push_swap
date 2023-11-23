@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 23:56:37 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:09:47 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	sort5(t_node **stack_a, t_node **stack_b)
 	sort3(stack_a);
 	if ((*stack_b)->next != NULL && (*stack_b)->index < \
 	(*stack_b)->next->index)
-		sb(*stack_b, 0);
+		sb(stack_b, 0);
 	pa(stack_a, stack_b, 0);
 	if (ft_lstsize(*stack_b) == 1)
 		pa(stack_a, stack_b, 0);

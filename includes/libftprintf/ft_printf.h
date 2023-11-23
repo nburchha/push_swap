@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:37:15 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 23:12:34 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/23 12:31:43 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
 # include <fcntl.h>
 # include "libft/libft.h"
 

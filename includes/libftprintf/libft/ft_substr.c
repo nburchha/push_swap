@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:40:45 by nburchha          #+#    #+#             */
-/*   Updated: 2023/10/15 22:57:58 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:51:34 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substring;
-	size_t	i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	if ((unsigned int)ft_strlen(s) < start)

@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:50:01 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/21 00:45:50 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:09:35 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void	sort3(t_node **stack)
 			rra(stack, 0);
 	}
 	if ((*stack)->index > (*stack)->next->index)
-		sa(*stack, 0);
+		sa(stack, 0);
 }
