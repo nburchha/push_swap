@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:52:27 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 15:43:45 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:01:16 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,15 @@ void	free_split(char **split)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (split == NULL)
 		return ;
-	while (split[++i])
+	while (split[i])
+	{
 		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
 	free(split);
+	split = NULL;
 }

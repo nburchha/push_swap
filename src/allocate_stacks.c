@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:21:07 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:34:40 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:05:26 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_stack(char **input, t_node **stack_a)
 		j = -1;
 		split_str = ft_split(input[i], ' ');
 		if (split_str == NULL)
-			free_exit(stack_a, NULL, split_str);
+			free_exit(stack_a, NULL, NULL);
 		if (i == 0)
 		{
 			if (check_input(split_str[++j]) == -1)
@@ -62,5 +62,5 @@ void	init_stack(char **input, t_node **stack_a)
 		free_split(split_str);
 	}
 	if (check_double(*stack_a) == -1)
-		free_exit(stack_a, NULL, split_str);
+		free_exit(stack_a, NULL, NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:53:45 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:53:46 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:33:35 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int	check_input(const char *str)
 	int	i;
 
 	i = -1;
-	if ((ft_strlen(str) > 10 && str[0] != '-') || \
-		(ft_strlen(str) > 11 && str[0] == '-'))
+	if ((ft_strlen(str) == 10 && str[0] != '-' && str[ft_strlen(str) - 1] \
+		> '7') || (ft_strlen(str) == 11 && str[0] == '-' && \
+		str[ft_strlen(str) - 1] > '8') || (ft_strlen(str) > 10 && \
+		str[0] != '-') || (ft_strlen(str) > 11))
 		return (-1);
 	if (str[0] == '-')
 		i++;

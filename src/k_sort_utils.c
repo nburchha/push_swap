@@ -6,7 +6,7 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 23:54:23 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 00:48:04 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:21:06 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,3 @@ t_node	*find_element(t_node **stack, int index)
 	}
 	return (NULL);
 }
-
-// t_node	*find_biggest_element(t_node **stack_a)
-// {
-// 	t_node	*tmp;
-// 	t_node	*biggest;
-
-// 	tmp = *stack_a;
-// 	biggest = tmp;
-// 	while (tmp != NULL)
-// 	{
-// 		if (tmp->index > biggest->index)
-// 			biggest = tmp;
-// 		tmp = tmp->next;
-// 	}
-// 	ft_printf("biggest = %p\n", biggest);
-// 	return (biggest);
-// }

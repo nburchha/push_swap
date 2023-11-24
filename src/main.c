@@ -6,30 +6,30 @@
 /*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:10:19 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:44:56 by nburchha         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:19:52 by nburchha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_stack(t_node **stack)
-{
-	t_node	*tmp;
+// void	print_stack(t_node **stack)
+// {
+// 	t_node	*tmp;
 
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		ft_printf("%d ", *(int *)tmp->content);
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
-}
+// 	tmp = *stack;
+// 	while (tmp != NULL)
+// 	{
+// 		ft_printf("%d ", *(int *)tmp->content);
+// 		tmp = tmp->next;
+// 	}
+// 	ft_printf("\n");
+// }
 
 void	sort(t_node **stack_a, t_node **stack_b)
 {
 	if (ft_lstsize(*stack_a) == 2 && (*stack_a)->index > \
 	(*stack_a)->next->index)
-		sa(stack_a, 1);
+		sa(stack_a, 0);
 	else if (ft_lstsize(*stack_a) <= 3)
 		sort3(stack_a);
 	else if (ft_lstsize(*stack_a) <= 5)
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	t_node	**stack_b;
 
 	if (argc == 1)
-		return (1);
+		return (0);
 	stack_a = (t_node **)malloc(sizeof(t_node *));
 	stack_b = (t_node **)malloc(sizeof(t_node *));
 	*stack_a = NULL;
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	if (*stack_a == NULL)
 		return (write(2, "Error\n", 6), free(stack_a), free(stack_b), 1);
 	sorted_index(stack_a);
-	if (ft_lstsize(*stack_a) > 2 && is_sorted(stack_a, stack_b) == 0)
+	if (is_sorted(stack_a, stack_b) == 0)
 		sort(stack_a, stack_b);
 	return (free(stack_b), ft_lstclear(stack_a, &free), free(stack_a), 0);
 }
