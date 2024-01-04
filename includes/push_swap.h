@@ -6,7 +6,7 @@
 /*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:12 by nburchha          #+#    #+#             */
-/*   Updated: 2024/01/04 00:46:10 by niklasburch      ###   ########.fr       */
+/*   Updated: 2024/01/04 01:07:57 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,11 @@ void	sorted_index(t_node **stack_a);
 void	which_rotation(t_node **stack_a, t_node *node_to_rotate, int i);
 t_node	*find_element(t_node **stack, int index);
 void	push_back(t_node **stack_a, t_node **stack_b, int len);
+
+t_node	*ft_lstnew_mod(void *content);
+void	ft_lstadd_back_mod(t_node **lst, t_node *new);
+t_node	*ft_lstlast_mod(t_node *lst);
+int		ft_lstsize_mod(t_node *lst);
+void	ft_lstclear_mod(t_node **lst);
 
 #endif

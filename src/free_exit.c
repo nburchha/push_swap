@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:52:27 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/24 14:01:16 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:17:26 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	free_exit(t_node **stack_a, t_node **stack_b, char **split)
 	if (split != NULL)
 		free_split(split);
 	if (stack_a != NULL)
-		ft_lstclear(stack_a, &free);
+		ft_lstclear_mod(stack_a);
 	if (stack_b != NULL)
-		ft_lstclear(stack_b, &free);
+		ft_lstclear_mod(stack_b);
 	write(2, "Error\n", 6);
 	exit(1);
 }

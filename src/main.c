@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:10:19 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/24 15:19:52 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:08:50 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@
 
 void	sort(t_node **stack_a, t_node **stack_b)
 {
-	if (ft_lstsize(*stack_a) == 2 && (*stack_a)->index > \
+	if (ft_lstsize_mod(*stack_a) == 2 && (*stack_a)->index > \
 	(*stack_a)->next->index)
 		sa(stack_a, 0);
-	else if (ft_lstsize(*stack_a) <= 3)
+	else if (ft_lstsize_mod(*stack_a) <= 3)
 		sort3(stack_a);
-	else if (ft_lstsize(*stack_a) <= 5)
+	else if (ft_lstsize_mod(*stack_a) <= 5)
 		sort5(stack_a, stack_b);
 	else
 	{
 		k_sort(stack_a, stack_b);
-		push_back(stack_a, stack_b, ft_lstsize(*stack_b));
+		push_back(stack_a, stack_b, ft_lstsize_mod(*stack_b));
 	}
 }
 
@@ -60,5 +60,5 @@ int	main(int argc, char **argv)
 	sorted_index(stack_a);
 	if (is_sorted(stack_a, stack_b) == 0)
 		sort(stack_a, stack_b);
-	return (free(stack_b), ft_lstclear(stack_a, &free), free(stack_a), 0);
+	return (free(stack_b), ft_lstclear_mod(stack_a), free(stack_a), 0);
 }

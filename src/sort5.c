@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort5.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:19:37 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:09:47 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:16:03 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ void	which_rotation(t_node **stack_a, t_node *rotate_to, int i)
 	tmp = *stack_a;
 	while (tmp != NULL && tmp != rotate_to && ++r >= 0)
 		tmp = tmp->next;
-	rr = (ft_lstsize(*stack_a) + 3) - r;
+	rr = (ft_lstsize_mod(*stack_a) + 3) - r;
 	r_util(rotate_to, stack_a, i, r - rr);
 }
 
 void	sort5(t_node **stack_a, t_node **stack_b)
 {
-	if (ft_lstsize(*stack_a) <= 3)
+	if (ft_lstsize_mod(*stack_a) <= 3)
 	{
 		sort3(stack_a);
 		return ;
 	}
-	while (ft_lstsize(*stack_a) > 3)
+	while (ft_lstsize_mod(*stack_a) > 3)
 	{
 		which_rotation(stack_a, find_smallest_element(stack_a), 0);
 		pb(stack_a, stack_b, 0);
@@ -85,6 +85,6 @@ void	sort5(t_node **stack_a, t_node **stack_b)
 	(*stack_b)->next->index)
 		sb(stack_b, 0);
 	pa(stack_a, stack_b, 0);
-	if (ft_lstsize(*stack_b) == 1)
+	if (ft_lstsize_mod(*stack_b) == 1)
 		pa(stack_a, stack_b, 0);
 }

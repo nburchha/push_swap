@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   k_sort.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 18:56:35 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/21 17:46:57 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:16:55 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	k_sort(t_node **stack_a, t_node **stack_b)
 	int	range;
 
 	i = 0;
-	range = ft_sqrt(ft_lstsize(*stack_a)) * 14 / 10;
+	range = ft_sqrt(ft_lstsize_mod(*stack_a)) * 14 / 10;
 	while (*stack_a)
 	{
 		if ((*stack_a)->index <= i)
@@ -71,5 +71,5 @@ void	k_sort(t_node **stack_a, t_node **stack_b)
 		else
 			ra(stack_a, 0);
 	}
-	push_back(stack_a, stack_b, ft_lstsize(*stack_b));
+	push_back(stack_a, stack_b, ft_lstsize_mod(*stack_b));
 }

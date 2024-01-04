@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 19:15:36 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/20 23:22:42 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:04:20 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ra(t_node **stack, int print)
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = NULL;
-	ft_lstlast(*stack)->next = tmp;
+	ft_lstlast_mod(*stack)->next = tmp;
 	if (print == 0)
 		ft_printf("ra\n");
 }
@@ -73,7 +73,7 @@ void	rb(t_node **stack, int print)
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = NULL;
-	ft_lstlast(*stack)->next = tmp;
+	ft_lstlast_mod(*stack)->next = tmp;
 	if (print == 0)
 		ft_printf("rb\n");
 }

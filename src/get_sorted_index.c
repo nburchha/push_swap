@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_sorted_index.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:02:11 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:20:13 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:01:25 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	sorted_index(t_node **stack_a)
 	int		len;
 	t_node	*tmp;
 
-	len = ft_lstsize(*stack_a);
+	len = ft_lstsize_mod(*stack_a);
 	array = fill_array(stack_a, len);
 	if (!array)
 		return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nburchha <nburchha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:39:39 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/23 19:28:25 by nburchha         ###   ########.fr       */
+/*   Updated: 2024/01/04 01:00:20 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ int	main(int argc, char **argv)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	return (free(stack_b), ft_lstclear(stack_a, &free), free(stack_a), 0);
+	return (free(stack_b), ft_lstclear_mod(stack_a, &free), free(stack_a), 0);
 }

@@ -6,7 +6,7 @@ LIB = ./libs42/libs42.a
 
 SRC_FILES = main.c allocate_stacks.c stack_operations.c stack_operations1.c \
 			stack_operations2.c sort5.c sort3.c k_sort.c get_sorted_index.c \
-			allocate_utils.c free_exit.c
+			allocate_utils.c free_exit.c list_funcs.c
 BSRC_FILES = checker.c
 OBJS = $(addprefix .obj/, $(SRC_FILES:.c=.o))
 BOBJS = $(addprefix .obj/, $(BSRC_FILES:.c=.o)) $(addprefix .obj/, $(filter-out main.o, $(SRC_FILES:.c=.o)))
@@ -14,7 +14,7 @@ BOBJS = $(addprefix .obj/, $(BSRC_FILES:.c=.o)) $(addprefix .obj/, $(filter-out 
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	@$(CC) $(OBJS) $(LIB) -o $(NAME) $(CFLAGS)
+	@$(CC) $(LIB) $(OBJS) -o $(NAME) $(CFLAGS)
 
 bonus: $(BONUS_NAME)
 $(BONUS_NAME): $(LIB) $(BOBJS) 

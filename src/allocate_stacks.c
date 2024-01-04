@@ -6,7 +6,7 @@
 /*   By: niklasburchhardt <niklasburchhardt@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:21:07 by nburchha          #+#    #+#             */
-/*   Updated: 2023/11/26 17:45:48 by niklasburch      ###   ########.fr       */
+/*   Updated: 2024/01/04 01:15:30 by niklasburch      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	init_stack2(t_node **stack_a, char **split_str, int j)
 	{
 		if (check_input(split_str[j]) == -1)
 			free_exit(stack_a, NULL, split_str);
-		ft_lstadd_back(stack_a, \
-		ft_lstnew(init_content(ft_atoi(split_str[j]))));
-		if (ft_lstlast(*stack_a) == NULL)
+		ft_lstadd_back_mod(stack_a, \
+		ft_lstnew_mod(init_content(ft_atoi(split_str[j]))));
+		if (ft_lstlast_mod(*stack_a) == NULL)
 			free_exit(stack_a, NULL, split_str);
 	}
 }
@@ -53,9 +53,9 @@ void	init_stack(char **input, t_node **stack_a)
 		{
 			if (check_input(split_str[++j]) == -1)
 				free_exit(stack_a, NULL, split_str);
-			ft_lstadd_back(stack_a, \
-			ft_lstnew(init_content(ft_atoi(split_str[j]))));
-			if (ft_lstlast(*stack_a) == NULL)
+			ft_lstadd_back_mod(stack_a, \
+			ft_lstnew_mod(init_content(ft_atoi(split_str[j]))));
+			if (ft_lstlast_mod(*stack_a) == NULL)
 				free_exit(stack_a, NULL, split_str);
 		}
 		init_stack2(stack_a, split_str, j);
