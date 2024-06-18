@@ -6,16 +6,16 @@ Push Swap 42 is a sorting algorithm project at 42 school that involves sorting a
 ## Getting Started
 To get started with Push Swap 42, follow these steps:
 
-1. **Clone the repository:**
+1. **Clone the repository and initialize submodules:**
     ```bash
     git clone https://github.com/nburchha/push_swap/ push_swap
     cd push_swap
+    git submodule update --init
     ```
 
 2. **Compile the project**:
-    Initialize and update submodules and use `make` to compile the project:
+   Use `make` to compile the project:
     ```bash
-    git submodule update --init
     make
     ```
 
